@@ -7,11 +7,10 @@ class Content(Mapping):
     __delimiter = r"^(?:-|\+){3}\s*$"
     __regex = re.compile(__delimiter, re.MULTILINE)
 
-    @classmethod()
+    @classmethod
     def load(self, cls, string):
         _, fm, content = cls.__regex.split(string, 2)
-        load(fm, Loader=FullLoader)
-
+        metadata = load(fm, Loader=FullLoader)
         return cls(metadata, content)
 
     def __init__(self, metadata, content):
@@ -24,11 +23,11 @@ class Content(Mapping):
 
     @property
     def type(self):
-        return self.data['type'] or None
+        return self.data['type'] if 'type' in self.data else None
 
     @type.setter
-    def type(self, data):
-        self.data['type'] = data
+    def type(self, type):
+        self.data['type'] = type
 
     def __getitem__(self, key):
         return self.data[key]
