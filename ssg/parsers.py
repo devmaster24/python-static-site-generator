@@ -11,7 +11,7 @@ class Parser:
         return True if extension in self.extensions else False
 
     def parse(self, path: Path, source: Path, dest: Path):
-        raise NotImplementedError()
+        raise NotImplementedError
 
     def read(self, path):
         with open(path, 'r') as file:
