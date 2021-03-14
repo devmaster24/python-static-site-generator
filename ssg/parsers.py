@@ -8,7 +8,7 @@ class Parser:
     extensions: List[str] = []
 
     def valid_extension(self, extension):
-        return True if extension in self.extensions else False
+        return extension in self.extensions
 
     def parse(self, path: Path, source: Path, dest: Path):
         raise NotImplementedError
